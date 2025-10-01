@@ -25,7 +25,7 @@ Você pode rodar localmente:
 
 1.  Clone o repositório:
     ```bash
-    git clone https://seu-usuario-github/calculadora-custo-viagem.git
+    git clone https://sksLil/calculadora-custo-viagem.git
     ```
 2.  Navegue até a pasta do projeto:
     ```bash
