@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Custo e Autonomia de Viagem</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center p-4">
+
+    <div class="w-full max-w-lg bg-white p-8 rounded-xl shadow-2xl border border-gray-200">
+        
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl font-extrabold text-indigo-700">💰 Custo de Viagem Inteligente</h1>
+            <p class="text-gray-500 mt-1">Descubra quanto você gastará com combustível.</p>
+        </header>
+
+        <form id="cost-form" class="space-y-6">
+            
+            <div>
+                <label for="distance" class="block text-sm font-medium text-gray-700 mb-1">
+                    Distância a percorrer (ida):
+                </label>
+                <div class="relative">
+                    <input type="number" id="distance" name="distance" placeholder="Ex: 250" step="0.1" required
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 pr-12">
+                    <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">Km</span>
+                </div>
+            </div>
+
+            <div>
+                <label for="consumption" class="block text-sm font-medium text-gray-700 mb-1">
+                    Consumo Médio do Veículo:
+                </label>
+                <div class="relative">
+                    <input type="number" id="consumption" name="consumption" placeholder="Ex: 12.5" step="0.1" required
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 pr-12">
+                    <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">Km/L</span>
+                </div>
+            </div>
+
+            <div>
+                <label for="price" class="block text-sm font-medium text-gray-700 mb-1">
+                    Preço por Litro de Combustível:
+                </label>
+                <div class="relative">
+                    <input type="number" id="price" name="price" placeholder="Ex: 5.49" step="0.01" required
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 pr-12">
+                    <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">R$</span>
+                </div>
+            </div>
+            
+            <div>
+                <label for="tank-capacity" class="block text-sm font-medium text-gray-700 mb-1">
+                    Capacidade do Tanque:
+                </label>
+                <div class="relative">
+                    <input type="number" id="tank-capacity" name="tank-capacity" placeholder="Ex: 50" step="1" required
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 pr-12">
+                    <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">Litros</span>
+                </div>
+            </div>
+
+            <div class="flex items-center pt-2">
+                <input id="roundtrip" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                <label for="roundtrip" class="ml-2 block text-sm font-medium text-gray-700">
+                    Incluir o caminho de **volta** no cálculo.
+                </label>
+            </div>
+
+            <button type="submit" id="calculate-btn"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg shadow-md transition duration-200 transform hover:scale-[1.01]">
+                Calcular Custo Total
+            </button>
+        </form>
+
+        <div id="result-area" class="mt-8 p-6 bg-green-50 border-l-4 border-green-500 rounded-lg shadow-inner hidden">
+            <h3 class="text-lg font-bold text-green-800 mb-4 flex items-center">
+                <span class="mr-2 text-2xl">✅</span> Resumo da Viagem:
+            </h3>
+
+            <div class="space-y-3">
+                <p class="text-gray-700">Custo Total (Combustível):</p>
+                <p class="text-5xl font-extrabold text-green-600">
+                    R$ <span id="total-cost-value">0,00</span>
+                </p>
+
+                <p class="text-gray-700 border-t pt-3">Tanques Necessários:</p>
+                <p class="text-4xl font-extrabold text-indigo-600">
+                    <span id="tanks-needed-value">0,0</span> <span class="text-xl font-normal text-indigo-700">Tanques</span>
+                </p>
+            </div>
+
+            <p class="text-sm text-gray-600 mt-4 border-t pt-3">Custo e consumo total para a viagem de <span id="trip-type" class="font-bold">ida</span>.</p>
+        </div>
+        
+        <p id="error-message" class="mt-4 p-3 text-red-700 bg-red-100 border border-red-300 rounded font-medium hidden">
+            Por favor, preencha todos os campos com valores válidos e positivos.
+        </p>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
